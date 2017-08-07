@@ -107,6 +107,15 @@ p "b.start"
 # profile = Selenium::WebDriver::Firefox::Profile.new
 # profile.native_events = false
 # Watir::Browser.new :firefox, :profile => profil
+browser = Watir::Browser.new :chrome
+p "open"
+page = browser.goto('https://fd8-courses.leclercdrive.fr/magasin-106401-Mazeres-Pau-Sud/recherche.aspx?TexteRecherche=fromage')
+
+p "click"
+
+#b = Watir::Browser.start 'https://fd8-courses.leclercdrive.fr/magasin-106401-Mazeres-Pau-Sud/recherche.aspx?TexteRecherche=fromage'
+p "b.start"
+
  p diva = browser.ul(:id, /ulListeProduits/)
   p '-------------------------------😓----😓----😓-------------------------------------------------------------------------------------------'
 
@@ -118,16 +127,35 @@ p "b.start"
 #puts "location y = #{location[1]}"
 p "scroll"
  sleep(2)
+ browser.execute_script('
+  window.alert(\'kikou !!! 😓😓😓\');
+  window.scrollBy(0,1704);')
+ p "check to id"
+ sleep(5)
+p "click"
+p browser.element(id: 'sId26').link(:class, /aWCRS310_Add/).click
+sleep(5)
+p '-------------------------------😓----😓----😓-------------------------------------------------------------------------------------------'
+
+page = browser.goto('https://fd8-courses.leclercdrive.fr/magasin-106401-Mazeres-Pau-Sud/recherche.aspx?TexteRecherche=nutella')
+p diva = browser.ul(:id, /ulListeProduits/)
+  p '-------------------------------😓----😓----😓-------------------------------------------------------------------------------------------'
+
+ p lis = browser.ul(:id, /ulListeProduits/).text
+  p '-------------------------------😓----😓----😓-------------------------------------------------------------------------------------------'
+sleep(3)
+p "scroll"
+ sleep(5)
  browser.execute_script('window.scrollBy(0,200);')
  sleep(5)
 p "click"
-p browser.element(id: 'sId15').link(:class, /aWCRS310_Add/).click
+p browser.element(id: 'sId5').link(:class, /aWCRS310_Add/).click
 sleep(3)
-  p '-------------------------------😓----😓----😓-------------------------------------------------------------------------------------------'
+p '-------------------------------😓----😓----😓-------------------------------------------------------------------------------------------'
 
 p "cookie"
 p browser.cookies.to_a
-  p '-------------------------------😓----😓----😓-------------------------------------------------------------------------------------------'
+p '-------------------------------😓----😓----😓-------------------------------------------------------------------------------------------'
 
 # p browser.div(:id => 'sId12').div(:id => 'sLibellePictoAjouterProduit')
 
